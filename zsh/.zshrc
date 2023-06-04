@@ -36,7 +36,7 @@ else
   THRESHOLD=2
 fi
 NEWLINE=$'\n'
-PS1="%$THRESHOLD(L.%{$fg[red]%}[$LEVEL] .)%{$fg[green]%}[%*] %{$fg[cyan]%}[%n@%m:%d]%{$reset_color%}$NEWLINE$ "
+PS1="%$THRESHOLD(L.%{$fg[red]%}[$LEVEL] .)%{$fg[green]%}[%*] %{$fg[cyan]%}[%n@%m:%~]%{$reset_color%}$NEWLINE$ "
 
 setopt histignorealldups sharehistory
 
