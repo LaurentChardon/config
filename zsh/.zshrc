@@ -12,9 +12,8 @@ export EDITOR=nvim
 # Force screen to use a login shell
 alias screen="screen -l"
 
-alias vi=nvim
-alias vim=nvim
-alias ls='ls --color'
+alias ls='ls -G'
+alias icat='kitten icat'
 
 #  Set prompt
 autoload -U colors && colors
