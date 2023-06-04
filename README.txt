@@ -2,7 +2,7 @@ Quick and easy CLI config
 
 To set up:
 
-for folder in zsh tmux nvim
+for folder in kitty zsh tmux nvim
 do
 	[ -d $HOME/.config/${folder} ] && mv $HOME/.config/${folder} $HOME/.config/${folder}.bak
 	ln -s ${PWD}/${folder} $HOME/.config/
