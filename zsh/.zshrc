@@ -12,7 +12,7 @@ export EDITOR=nvim
 # Force screen to use a login shell
 alias screen="screen -l"
 
-alias ls='ls -G'
+alias ls='ls --color=auto'
 alias icat='kitten icat'
 
 #  Set prompt
