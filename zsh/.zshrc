@@ -7,15 +7,6 @@ HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
 
-# Reboot directly to Windows
-# Inspired by http://askubuntu.com/questions/18170/how-to-reboot-into-windows-from-ubuntu
-reboot_to_windows ()
-{
-    windows_title=$(grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
-    sudo grub-reboot "$windows_title" && sudo reboot
-}
-alias reboot-to-windows='reboot_to_windows'
-
 export EDITOR=nvim
 
 # Force screen to use a login shell
@@ -48,7 +39,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+/usr/bin/env which -s dircolors && eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -61,11 +52,12 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Load some OS installed plugins
-function load-plugin()
+function source-file()
 {
   [ -f $1 ] && source $1
 }
-load-plugin /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-load-plugin /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load OS specific config
+PLATFORM=$(uname -s)
+source-file $ZDOTDIR/.zshrc.$PLATFORM
 
