@@ -1,3 +1,4 @@
 .zcompdump
 *.bak
 .DS_Store
+kitty-local.conf
