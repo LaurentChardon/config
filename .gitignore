@@ -1,4 +1,5 @@
-.zcompdump
 *.bak
 .DS_Store
-kitty-local.conf
+kitty/kitty-local.conf
+zsh/.zshlogin
+zsh/.zcompdump
