@@ -1,9 +1,9 @@
 # Quick and easy CLI config
 
-These config files are custom made or tuned (I've taken some ideas here and there) to my own liking. This repository can be a good starting point to create your own config. It is specifically about my command line tools, currently kitty, zsh, tmux and neovim.
+These config files are custom made or tuned to my own liking. I've taken some ideas here and there, and tried to give credit and provenance where I could. This repository can be a good starting point to create your own config. It is specifically about the command line tools and terminal kitty, zsh, tmux and neovim.
 
 ## To set up:
-Install the packages for the kitty, zsh, tmux and nvim (neovim). Then copy the config files at the right location. One way to do this is the following, to be typed where this README.md file is located:
+Install the packages `kitty zsh zsh-autosuggestions zsh-syntax-highlighting tmux neovim`. Then copy the config files from this depot to the right locations. One way to do this is the following, to be typed where this README.md file is located:
 
 	for folder in kitty zsh tmux nvim
 	do
