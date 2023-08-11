@@ -8,6 +8,7 @@ HISTSIZE=5000
 SAVEHIST=5000
 
 export EDITOR=nvim
+export PATH=$HOME/bin:$PATH
 
 # Force screen to use a login shell
 alias screen="screen -l"
