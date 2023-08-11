@@ -61,3 +61,6 @@ function source-file()
 PLATFORM=$(uname -s)
 source-file $ZDOTDIR/.zshrc.$PLATFORM
 
+# Load machine specific config
+source-file $ZDOTDIR/.zshrc.$HOST
+
