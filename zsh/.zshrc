@@ -61,6 +61,9 @@ function source-file()
 PLATFORM=$(uname -s)
 source-file $ZDOTDIR/.zshrc.$PLATFORM
 
+# Load tweaked ls colors
+source-file $ZDOTDIR/ls_colors
+
 # Load machine specific config
 source-file $ZDOTDIR/.zshrc.$HOST
 
