@@ -3,3 +3,5 @@
 kitty/kitty-local.conf
 zsh/.zshlogin
 zsh/.zcompdump
+zsh/.zcompcache
+zsh/.zsh_sessions
