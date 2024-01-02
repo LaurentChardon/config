@@ -9,8 +9,12 @@ HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
 
-export EDITOR=vim
 export PATH=$HOME/bin:$PATH
+
+# Use nvim editor if it exists, or vim, or vi, in order of preference
+which vi   &>/dev/null && export EDITOR=vi
+which vim  &>/dev/null && export EDITOR=vim  && alias vi=vim
+which nvim &>/dev/null && export EDITOR=nvim && alias vi=nvim
 
 # Force screen to use a login shell
 alias screen="screen -l"
