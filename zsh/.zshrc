@@ -34,6 +34,8 @@ else
 fi
 NEWLINE=$'\n'
 PS1="%$THRESHOLD(L.%{$fg[red]%}[$LEVEL] .)%{$fg[green]%}[%*] %{$fg[cyan]%}[%n@%m:%~]%{$reset_color%}$NEWLINE$ "
+# Set terminal title (or tab) to hostname
+print -Pn "\e]0;%m\a" 
 
 setopt histignorealldups sharehistory
 
