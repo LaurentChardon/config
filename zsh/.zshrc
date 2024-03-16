@@ -10,6 +10,7 @@ HISTSIZE=5000
 SAVEHIST=5000
 
 export PATH=$HOME/bin:$PATH
+export TERM=xterm-256color
 
 # Use nvim editor if it exists, or vim, or vi, in order of preference
 which vi   &>/dev/null && export EDITOR=vi
