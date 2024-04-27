@@ -7,4 +7,9 @@ export SU_CMD="/usr/local/bin/sudo -E sh -c"
 
 alias ls='ls -G'
 
+# FreeBSD plugins
+source-file /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source-file /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
 neofetch
