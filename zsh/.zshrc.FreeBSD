@@ -10,6 +10,7 @@ alias ls='ls -G'
 # FreeBSD plugins
 source-file /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source-file /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source-file /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+source-file /usr/local/share/zsh-navigation-tools/znt-tmux.zsh
 
 neofetch
