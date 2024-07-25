@@ -5,7 +5,10 @@ reboot_to_windows ()
     windows_title=$(grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
     sudo grub-reboot "$windows_title" && sudo reboot
 }
+
 alias reboot-to-windows='reboot_to_windows'
+alias mutt='neomutt'
+alias mail='neomutt'
 
 # Load some OS installed plugins
 source-file /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

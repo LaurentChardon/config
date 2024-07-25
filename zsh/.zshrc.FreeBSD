@@ -11,5 +11,4 @@ alias ls='ls -G'
 source-file /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source-file /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
 neofetch
