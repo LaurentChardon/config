@@ -5,3 +5,4 @@ zsh/.zshlogin
 zsh/.zcompdump
 zsh/.zcompcache
 zsh/.zsh_sessions
+zsh/.zshrc.*.local
