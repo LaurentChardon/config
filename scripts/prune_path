@@ -1,0 +1,26 @@
+#!/usr/local/bin/zsh
+# Parse $PATH and remove duplicate entries
+# File must be sourced and not executed
+
+path_array=(${(s.:.)PATH})
+unset unique_paths
+typeset -A unique_paths
+
+new_path_array=()
+
+for path in $path_array; do
+  if [[ -z ${unique_paths[$path]} ]]; then
+    new_path_array+=($path)
+    unique_paths[$path]=1
+  fi
+done
+
+if [[ "$new_path" != "$PATH" ]]; then
+  # Update the PATH environment variable
+  export PATH="$new_path"
+fi
+
+# Join the new array into a string, separating by colon
+new_path="${(j.:.)new_path_array}"
+
+export PATH="$new_path"

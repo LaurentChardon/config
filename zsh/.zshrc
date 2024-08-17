@@ -84,3 +84,5 @@ source-file $ZDOTDIR/ls_colors
 # Load machine specific config
 source-file $ZDOTDIR/.zshrc.$HOST
 
+# Prune PATH of redundent entries
+source-file $HOME/bin/prune_path
