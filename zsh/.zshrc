@@ -37,10 +37,14 @@ NEWLINE=$'\n'
 PS1="%$THRESHOLD(L.%{$fg[red]%}[$LEVEL] .)%{$fg[green]%}[%*] %{$fg[cyan]%}[%n@%m:%~]%{$reset_color%}$NEWLINE$ "
 # Set terminal title (or tab) to hostname
 print -Pn "\e]0;%m\a" 
-# Set window title to current folder
+# Set tmux window title to current folder
 function precmd() {
     if [ -n "$TMUX" ]; then
-        tmux rename-window "$(basename "$PWD")"
+        if [ "$PWD" = "$HOME" ]; then
+            tmux rename-window "home"
+        else
+            tmux rename-window "$(basename "$PWD")"
+        fi
     fi
 }
 
