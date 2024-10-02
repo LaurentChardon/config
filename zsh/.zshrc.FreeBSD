@@ -1,6 +1,7 @@
 # Perform additional tests when building ports
 export DEVELOPER=yes
 export CCACHE_DIR=$HOME/.ccache
+export PORTSDIR=$HOME/work/freebsd-ports
 
 # For easier ports work
 export SU_CMD="/usr/local/bin/sudo -E sh -c"
