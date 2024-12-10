@@ -94,5 +94,9 @@ source-file $ZDOTDIR/ls_colors
 # Load machine specific config
 source-file $ZDOTDIR/.zshrc.$HOST
 
+# Display neofetch if it exists
+NEO=$(whence neofetch)
+[ -n $NEO ] && $NEO
+
 # Prune PATH of redundent entries
 source-file $HOME/bin/prune_path
