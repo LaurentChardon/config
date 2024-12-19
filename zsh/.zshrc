@@ -11,11 +11,19 @@ SAVEHIST=5000
 
 export PATH=$HOME/bin:$PATH
 export TERM=xterm-256color
+export TZ=EST5EDT
 
 # Use nvim editor if it exists, or vim, or vi, in order of preference
 which vi   &>/dev/null && export EDITOR=vi
 which vim  &>/dev/null && export EDITOR=vim  && alias vi=vim
 which nvim &>/dev/null && export EDITOR=nvim && alias vi=nvim
+function nvim() {
+	NVIMTMPDIR=/tmp/nvim-$$
+	mkdir -p $NVIMTMPDIR
+	ln -sf /usr/local/bin/gmake $NVIMTMPDIR/make
+	PATH=$NVIMTMPDIR:$PATH /usr/local/bin/nvim $@
+	rm -rf $NVIMTMPDIR
+}
 
 # Force screen to use a login shell
 alias screen="screen -l"
