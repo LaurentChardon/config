@@ -2,7 +2,8 @@
 .DS_Store
 kitty/kitty-local.conf
 zsh/.zshlogin
-zsh/.zcompdump
-zsh/.zcompcache
+zsh/.zcompdump*
+zsh/.zcompcache*
 zsh/.zsh_sessions
+zsh/.zsh_history
 zsh/.zshrc.*.local

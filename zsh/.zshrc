@@ -84,6 +84,10 @@ function source-file()
   [ -f $1 ] && source $1
 }
 
+# Load powerlevel10k
+source-file $ZDOTDIR/.p10k.zsh
+source-file $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+
 # Load OS specific config
 PLATFORM=$(uname -s)
 source-file $ZDOTDIR/.zshrc.$PLATFORM
