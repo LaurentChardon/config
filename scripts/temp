@@ -7,3 +7,8 @@ then
 	temp=${temp%C}
 	echo "${temp}°C"
 fi
+
+if [ "$(uname -s)" = "Linux" ]
+then
+	sensors | grep Package | awk '{ print $4 }' | sed 's/+//'
+fi
