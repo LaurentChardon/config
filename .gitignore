@@ -1,6 +1,7 @@
 *.bak
 .DS_Store
 kitty/kitty-local.conf
+nvim/lazy-lock.json
 zsh/.zshlogin
 zsh/.zcompdump*
 zsh/.zcompcache*
