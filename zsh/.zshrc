@@ -17,13 +17,6 @@ export TZ=EST5EDT
 which vi   &>/dev/null && export EDITOR=vi
 which vim  &>/dev/null && export EDITOR=vim  && alias vi=vim
 which nvim &>/dev/null && export EDITOR=nvim && alias vi=nvim
-function nvim() {
-	NVIMTMPDIR=/tmp/nvim-$$
-	mkdir -p $NVIMTMPDIR
-	ln -sf /usr/local/bin/gmake $NVIMTMPDIR/make
-	PATH=$NVIMTMPDIR:$PATH /usr/local/bin/nvim $@
-	rm -rf $NVIMTMPDIR
-}
 
 # Force screen to use a login shell
 alias screen="screen -l"

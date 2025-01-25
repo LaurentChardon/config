@@ -11,3 +11,12 @@ alias ls='ls -G'
 # FreeBSD plugins
 source-file /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source-file /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Create nvim function to force use of gnu make instead of gmake by lazynvim
+function nvim() {
+	NVIMTMPDIR=/tmp/nvim-$$
+	mkdir -p $NVIMTMPDIR
+	ln -sf /usr/local/bin/gmake $NVIMTMPDIR/make
+	PATH=$NVIMTMPDIR:$PATH /usr/local/bin/nvim $@
+	rm -rf $NVIMTMPDIR
+}
