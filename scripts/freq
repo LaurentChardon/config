@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$(uname -s)" == "FreeBSD" ]
+then
+	# Fetch the cpu frequency information from the sysctl command
+	freq=$(sysctl -n dev.cpu.0.freq)
+	echo "${freq}MHz"
+fi
