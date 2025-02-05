@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/usr/bin/env zsh
 # Parse $PATH and remove duplicate entries
 # File must be sourced and not executed
 
