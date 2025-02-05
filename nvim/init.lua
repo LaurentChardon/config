@@ -20,3 +20,7 @@ vim.cmd("highlight Normal guibg=#0d1117")
 vim.opt.expandtab = false  -- Use tabs instead of spaces
 vim.opt.tabstop = 8        -- Number of spaces per tab (for display)
 vim.opt.shiftwidth = 8     -- Number of spaces for autoindent
+
+-- Speed up ESC key press
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 50
