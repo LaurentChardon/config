@@ -2,7 +2,7 @@
 mkdir -p $HOME/.config
 mkdir -p $HOME/bin
 
-for folder in kitty zsh tmux
+for folder in kitty zsh tmux nvim
 do
   [ -d $HOME/.config/${folder} ] && mv $HOME/.config/${folder} $HOME/.config/${folder}.bak
   ln -s ${PWD}/${folder} $HOME/.config/
