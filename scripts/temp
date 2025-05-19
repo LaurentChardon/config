@@ -10,5 +10,5 @@ fi
 
 if [ "$(uname -s)" = "Linux" ]
 then
-	sensors | grep Package | awk '{ print $4 }' | sed 's/+//'
+	sensors | grep -m1 -E 'Package|Tctl' | awk -F: '{ split($2, a, " "); print a[1] }' | sed 's/+//'
 fi
