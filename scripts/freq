@@ -8,7 +8,19 @@ case "$os" in
     [ -n "$freq" ] && echo "${freq}MHz"
     ;;
   Linux)
-    awk -F: '/^cpu MHz/ { if ($2 > max) max = $2 } END { printf("%dMHz\n", max) }' /proc/cpuinfo
+    awk -F: '
+    /^cpu MHz/ {
+        gsub(/^[ \t]+/, "", $2)
+        freq = $2 + 0
+        if (min == "" || freq < min) min = freq
+        if (max == "" || freq > max) max = freq
+    }
+    END {
+            if (min != "" && max != "")
+            printf("%.0f-%.0fMHz\n", min, max)
+        else
+            print "No frequencies found"
+    }' /proc/cpuinfo
     ;;
 esac
 
