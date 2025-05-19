@@ -1,13 +1,14 @@
 #!/bin/sh
 
-if [ "$(uname -s)" = "FreeBSD" ]
-then
-	# Fetch the cpu frequency information from the sysctl command
-	freq=$(sysctl -n dev.cpu.0.freq)
-	echo "${freq}MHz"
-fi
+os=$(uname -s)
 
-if [ "$(uname -s)" = "Linux" ]
-then
-	grep MHz /proc/cpuinfo | sort | tail -n1 | awk '{ sub(/\..*/, "", $4); print $4 "MHz" }'
-fi
+case "$os" in
+  FreeBSD)
+    freq=$(sysctl -n dev.cpu.0.freq 2>/dev/null)
+    [ -n "$freq" ] && echo "${freq}MHz"
+    ;;
+  Linux)
+    awk -F: '/^cpu MHz/ { if ($2 > max) max = $2 } END { printf("%dMHz\n", max) }' /proc/cpuinfo
+    ;;
+esac
+
