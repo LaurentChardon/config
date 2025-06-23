@@ -49,6 +49,11 @@ function precmd() {
     fi
 }
 
+# Disable mouse reporting (1000h, 1002h, and 1003h) when starting zsh
+echo -ne '\e[?1000l'  # Basic mouse mode
+echo -ne '\e[?1002l'  # Mouse drag events
+echo -ne '\e[?1003l'  # Mouse any events
+
 setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
