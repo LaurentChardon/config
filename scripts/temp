@@ -6,9 +6,29 @@ then
 	temp=$(sysctl -n dev.amdtemp.0.core0.sensor0)
 	temp=${temp%C}
 	echo "${temp}°C"
-fi
-
-if [ "$(uname -s)" = "Linux" ]
+elif [ "$(uname -s)" = "Linux" ]
 then
-	sensors | grep -m1 -E 'Package|Tctl' | awk -F: '{ split($2, a, " "); print a[1] }' | sed 's/+//'
+	(
+		for z in /sys/class/thermal/thermal_zone*; do
+			[ -r "$z/type" ] || continue
+			[ -r "$z/temp" ] || continue
+				t=$(tr '[:upper:]' '[:lower:]' <"$z/type")
+			case "$t" in
+				*cpu*|*pkg*|*packag*|*soc*)
+					printf '%s\t%s\n' "$t" "$(cat "$z/temp")"
+					;;
+			esac
+		done
+	) | awk -F'\t' '
+	BEGIN{n=0}
+	{
+		v = int($2/1000)
+		if (n==0 || v < min) min = v
+		if (n==0 || v > max) max = v
+		n++
+	}
+	END{
+		if (n==1) printf "%d°C\n", min;
+		else if (n>1) printf "%d-%d°C\n", min, max;
+	}'
 fi
