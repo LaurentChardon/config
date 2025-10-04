@@ -1,26 +1,27 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+-- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
+-- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
+local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
--- Search Configuration
-vim.opt.ignorecase = false   -- Make search case-sensitive
-vim.opt.smartcase = false    -- Don't let nvim decide case sensitivity
-vim.opt.hlsearch = true      -- Highlight search matches
-vim.opt.incsearch = true     -- Show search matches as you type
-vim.opt.wrapscan = true      -- Wrap around the search
+if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
+  -- stylua: ignore
+  local result = vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  if vim.v.shell_error ~= 0 then
+    -- stylua: ignore
+    vim.api.nvim_echo({ { ("Error cloning lazy.nvim:\n%s\n"):format(result), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+    vim.fn.getchar()
+    vim.cmd.quit()
+  end
+end
 
--- Load github dark theme
-vim.cmd('colorscheme github_dark')
--- Override the background color
-vim.cmd("highlight Normal guibg=#0d1117")
+vim.opt.rtp:prepend(lazypath)
 
--- Set colortheme
--- vim.cmd("colorscheme tokyonight-night")
---
--- Use standard space per tab for display
-vim.opt.expandtab = false  -- Use tabs instead of spaces
-vim.opt.tabstop = 8        -- Number of spaces per tab (for display)
-vim.opt.shiftwidth = 8     -- Number of spaces for autoindent
+-- validate that lazy is available
+if not pcall(require, "lazy") then
+  -- stylua: ignore
+  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.fn.getchar()
+  vim.cmd.quit()
+end
 
--- Speed up ESC key press
-vim.opt.timeoutlen = 500
-vim.opt.ttimeoutlen = 50
+require "lazy_setup"
+require "polish"
