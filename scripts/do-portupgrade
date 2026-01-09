@@ -1,0 +1,2 @@
+# Perform portupgrade on all packages using PORTSDIR in HOME
+portupgrade -saS 'sudo --preserve-env=PORTSDIR'
