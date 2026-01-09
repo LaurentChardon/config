@@ -90,16 +90,23 @@ function source-file()
   [ -f $1 ] && source $1
 }
 
+# Load tweaked ls colors
+source-file $ZDOTDIR/ls_colors
+
 # Load powerlevel10k
 source-file $ZDOTDIR/.p10k.zsh
 source-file $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 
+# Load autosuggestions, completions and syntax-highlighting plugins
+source-file $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath+=($ZDOTDIR/plugins/zsh-completions/src)
+autoload -Uz compinit
+compinit
+source-file $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Load OS specific config
 PLATFORM=$(uname -s)
 source-file $ZDOTDIR/.zshrc.$PLATFORM
-
-# Load tweaked ls colors
-source-file $ZDOTDIR/ls_colors
 
 # Load machine specific config
 source-file $ZDOTDIR/.zshrc.$HOST
