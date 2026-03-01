@@ -28,3 +28,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.tabstop = 8        -- number of visual spaces per TAB
 vim.opt.shiftwidth = 8     -- number of spaces for each indent level
 vim.opt.softtabstop = 8    -- number of spaces when you press <Tab> in insert mode
+
+-- Don't use the system's clipboard
+vim.opt.clipboard = ""
