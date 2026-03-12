@@ -12,6 +12,7 @@ SAVEHIST=5000
 export PATH=$HOME/bin:$PATH
 export TERM=xterm-256color
 export TZ=EST5EDT
+export PGP_TTY=$(tty)  # For gpg interactive password prompt
 
 # Use nvim editor if it exists, or vim, or vi, in order of preference
 which vi   &>/dev/null && export EDITOR=vi
