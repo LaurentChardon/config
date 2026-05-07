@@ -1,7 +1,6 @@
 #!/bin/sh
 
 os=$(uname -s)
-
 case "$os" in
   FreeBSD)
     freq=$(sysctl -n dev.cpu.0.freq 2>/dev/null)
@@ -17,9 +16,7 @@ case "$os" in
     }
     END {
             if (min != "" && max != "")
-            printf("%.0f-%.0fMHz\n", min, max)
-        else
-            print "No frequencies found"
+                printf("%.0f-%.0fMHz\n", min, max)
     }' /proc/cpuinfo
     ;;
 esac
