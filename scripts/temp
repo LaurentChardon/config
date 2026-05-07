@@ -1,13 +1,14 @@
 #!/bin/sh
 
-if [ "$(uname -s)" = "FreeBSD" ]
-then
+OS=$(uname -s)
+case "$OS" in
+FreeBSD)
 	# Fetch the temperature from the sysctl command
 	temp=$(sysctl -n dev.cpu.0.temperature 2>/dev/null)
 	temp=${temp%C}
 	[ -n "${temp}" ] && echo "${temp}°C"
-elif [ "$(uname -s)" = "Linux" ]
-then
+	;;
+Linux)
 	(
 		for z in /sys/class/thermal/thermal_zone*; do
 			[ -r "$z/type" ] || continue
@@ -31,4 +32,5 @@ then
 		if (n==1) printf "%d°C\n", min;
 		else if (n>1) printf "%d-%d°C\n", min, max;
 	}'
-fi
+	;;
+esac
