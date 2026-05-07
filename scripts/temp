@@ -3,9 +3,9 @@
 if [ "$(uname -s)" = "FreeBSD" ]
 then
 	# Fetch the temperature from the sysctl command
-	temp=$(sysctl -n dev.cpu.0.temperature)
+	temp=$(sysctl -n dev.cpu.0.temperature 2>/dev/null)
 	temp=${temp%C}
-	echo "${temp}°C"
+	[ -n "${temp}" ] && echo "${temp}°C"
 elif [ "$(uname -s)" = "Linux" ]
 then
 	(
